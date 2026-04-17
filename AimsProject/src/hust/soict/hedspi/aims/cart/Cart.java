@@ -74,6 +74,30 @@ public class Cart {
             System.out.println(items0rdered[i].toString());
         }
     }
+    public void searchbyid(int id){
+        int check=0;
+        for(int i=0;i<qtyordered;i++){
+            if(items0rdered[i].getid()==id){
+                check=1;
+                System.out.printf("da tim thay"+items0rdered[i].toString());
+            }
+        }
+        if(check==0){
+            System.out.printf("khong tim thay");
+        }
+    }
+    public void searchbytitle(String title){
+        int check=0;
+        for(int i=0;i<qtyordered;i++){
+            if(items0rdered[i].gettitle()==title){
+                check=1;
+                System.out.println("da tim thay"+items0rdered[i].toString());
+            }
+        }
+        if(check==0){
+            System.out.println("khong tim thay");
+        }
+    }
     }
 
 

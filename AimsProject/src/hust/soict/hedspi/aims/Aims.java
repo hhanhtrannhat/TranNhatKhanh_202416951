@@ -44,7 +44,7 @@ public class Aims {
         c1.addDigitalVideoDisc(dvdList);
         c1.addDigitalVideoDisc(sampleDisc,sampleDisc);
         System.out.println(sampleDisc.getid());
-        c1.printcart();
+        c1.searchbytitle("Test Limit");
         //Test tinh tong tat ca
         System.out.println(c1.totalcost());
     }
