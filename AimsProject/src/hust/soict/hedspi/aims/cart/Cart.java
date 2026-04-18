@@ -8,7 +8,7 @@ public class Cart {
     private int qtyordered=0;//so luong dia hien tai
     public void  addDigitalVideoDisc(DigitalVideoDisc disc){
         //khi ma dia da la 20 thi bao day, khong them duoc nua
-        if(qtyordered>=20){
+        if(qtyordered>=MAX_NUMBERS_ORDERED){
             System.out.println("The cart is almost full");
         }
         else{
@@ -18,13 +18,13 @@ public class Cart {
         }
     }
     public void addDigitalVideoDisc(DigitalVideoDisc Disc1, DigitalVideoDisc Disc2){
-            if(qtyordered>=20){
+            if(qtyordered>=MAX_NUMBERS_ORDERED){
                 System.out.println("The cart is almost full");
             }
             else{
                 items0rdered[qtyordered++]=Disc1;
                 System.out.println("Disc1 has been added");
-                if(qtyordered>=20){
+                if(qtyordered>=MAX_NUMBERS_ORDERED){
                     System.out.println("The cart is almost full, cannot add disc2");
                 }
                 else{
@@ -36,7 +36,7 @@ public class Cart {
     public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
         int len=dvdList.length;
         for(int i=0;i<len;i++){
-            if(qtyordered<20){
+            if(qtyordered<MAX_NUMBERS_ORDERED){
                 items0rdered[qtyordered++]=dvdList[i];
             }
             else{
@@ -75,26 +75,27 @@ public class Cart {
         }
     }
     public void searchbyid(int id){
-        int check=0;
+        boolean matchFound=false;
         for(int i=0;i<qtyordered;i++){
             if(items0rdered[i].getid()==id){
-                check=1;
-                System.out.printf("da tim thay"+items0rdered[i].toString());
+                matchFound=true;
+                System.out.println("da tim thay"+items0rdered[i].toString());
+                break;
             }
         }
-        if(check==0){
-            System.out.printf("khong tim thay");
+        if(!matchFound){
+            System.out.println("khong tim thay");
         }
     }
     public void searchbytitle(String title){
-        int check=0;
+        boolean matchFound=false;
         for(int i=0;i<qtyordered;i++){
-            if(items0rdered[i].gettitle()==title){
-                check=1;
-                System.out.println("da tim thay"+items0rdered[i].toString());
+            if(items0rdered[i].gettitle().equalsIgnoreCase(title)){
+                matchFound=true;
+                System.out.println("da tim thay "+items0rdered[i].toString());
             }
         }
-        if(check==0){
+        if(!matchFound){
             System.out.println("khong tim thay");
         }
     }
