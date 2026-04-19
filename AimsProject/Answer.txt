@@ -1,8 +1,6 @@
-- When should accessor methods be used?
-Trích xuất dữ liệu để hiển thị lên giao diện người dùng (UI - lúc này thường chỉ cần Getters).
-Phục vụ quá trình tuần tự hóa/giải tuần tự hóa dữ liệu (Serialization/Deserialization) để lưu trữ hoặc truyền tải.
-Sử dụng trong các Đối tượng truyền dữ liệu (DTO - Data Transfer Objects) thuần túy không chứa logic nghiệp vụ.
-Bắt buộc phải có để tương thích với quy ước của một số framework (như chuẩn JavaBeans, Hibernate, Spring).
-
-- If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
-Không thể bởi vì khi đó hai phương thức khởi tạo này có cùng một chữ ký y hệt nhau là DigitalVideoDisc(String), do đó Java sẽ báo lỗi do không phân biệt được hai phương thức khởi tạo này.
+Question: Is JAVA a Pass by Value or a Pass by Reference programming language? 
+- Java là ngôn ngữ truyền tham trị, không phải truyền tham chiếu
+After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain? 
+-Vì Java sử dụng cơ chế Truyền tham trị. Hàm swap chỉ nhận được 2 bản sao địa chỉ bộ nhớ của 2 cái đĩa. Việc tráo đổi 2 bản sao này bên trong hàm hoàn toàn không tác động gì đến 2 biến gốc jungleDVD và cinderellaDVD nằm ngoài hàm main
+After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed? 
+-Hàm changeTitle cũng nhận một bản sao địa chỉ, nhưng bản sao này vẫn trỏ thẳng đến cái đĩa gốc trên bộ nhớ. Khi bạn gọi hàm dvd.setTitle(...), nó đã can thiệp và sửa trực tiếp nội dung bên trong cái đĩa gốc đó. Do vậy, khi ra ngoài hàm, cái đĩa gốc đã mang tên mới và việc gán dvd = new... ở dòng code sau đó chỉ làm thay đổi bản sao, không ảnh hưởng đến đĩa gốc

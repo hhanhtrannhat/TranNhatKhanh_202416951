@@ -79,7 +79,7 @@ public class Cart {
         for(int i=0;i<qtyordered;i++){
             if(items0rdered[i].getid()==id){
                 matchFound=true;
-                System.out.println("da tim thay"+items0rdered[i].toString());
+                System.out.println("da tim thay "+items0rdered[i].toString());
                 break;
             }
         }
