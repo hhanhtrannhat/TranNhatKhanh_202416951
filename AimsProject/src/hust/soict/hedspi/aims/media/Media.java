@@ -64,10 +64,18 @@ public abstract class Media {
     }
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof Media)) return false; // Kiểm tra kiểu trước khi ép kiểu
-        Media media = (Media) obj;
-        return this.getTitle() != null && this.getTitle().equals(media.getTitle()); // So sánh title
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || !(obj instanceof Media)) {
+            return false;
+        }
+        Media otherMedia = (Media) obj;
+        if (this.getTitle() != null && this.getTitle().equals(otherMedia.getTitle())) {
+            return true;
+        }
+
+        return false;
     }
     @Override
     public String toString() {

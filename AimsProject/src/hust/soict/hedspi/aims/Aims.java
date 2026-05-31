@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.media.Media;
@@ -273,9 +274,16 @@ public class Aims {
         }
         return count;
     }
+
     private static void playMedia(Media media) {
         if (media instanceof Playable) {
-            ((Playable) media).play();
+            try {
+                ((Playable) media).play();
+            } catch (PlayerException e) {
+                System.err.println("Không thể phát media này!");
+                System.err.println(e.getMessage());
+                e.printStackTrace();
+            }
         } else {
             System.out.println("Sản phẩm này (" + media.getTitle() + ") không hỗ trợ phát (Play)!");
         }

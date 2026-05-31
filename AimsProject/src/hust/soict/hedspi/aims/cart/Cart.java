@@ -1,14 +1,14 @@
 package hust.soict.hedspi.aims.cart;
 
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.util.Collections;
 
 public class Cart {
 
-    // Khai báo ArrayList thay cho mảng thông thường
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    // Khai báo ObservableList thay cho ArrayList để JavaFX có thể theo dõi sự thay đổi dữ liệu
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
     // Hàm thêm một đối tượng Media (Book, CD, DVD) vào giỏ hàng
     public void addMedia(Media media) {
@@ -19,12 +19,14 @@ public class Cart {
             System.out.println(media.getTitle() + " đã có sẵn trong giỏ hàng.");
         }
     }
+
     public void addMedia(Media media1, Media media2) {
         System.out.println("--- Đang thêm 2 sản phẩm vào giỏ hàng ---");
         // Tái sử dụng hàm gốc ở trên để thêm từng cái
         this.addMedia(media1);
         this.addMedia(media2);
     }
+
     public void addMedia(Media[] mediaList) {
         System.out.println("--- Đang thêm một danh sách sản phẩm vào giỏ hàng ---");
         // Dùng vòng lặp duyệt qua từng phần tử trong mảng và thêm vào giỏ
@@ -45,13 +47,12 @@ public class Cart {
 
     // Hàm kiểm tra số lượng sản phẩm
     public int qnt() {
-        return itemsOrdered.size(); // ArrayList sử dụng size() thay vì length
+        return itemsOrdered.size();
     }
 
     // Hàm tính tổng số tiền đĩa trong cart
     public float totalCost() {
         float total = 0;
-        // Sử dụng vòng lặp for-each rất tiện lợi cho ArrayList
         for (Media media : itemsOrdered) {
             total += media.getCost();
         }
@@ -95,10 +96,11 @@ public class Cart {
             System.out.println("Không tìm thấy sản phẩm với tiêu đề: " + title);
         }
     }
+
     public void sortByTitleCost() {
         Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
         System.out.println("Đã sắp xếp giỏ hàng theo Tiêu đề -> Giá.");
-        this.printCart(); // In ra để xem kết quả luôn
+        this.printCart();
     }
 
     public void sortByCostTitle() {
@@ -107,9 +109,7 @@ public class Cart {
         this.printCart();
     }
 
-    public void addDMe(DigitalVideoDisc dvd2) {
-    }
-    public ArrayList<Media> getItemsOrdered() {
+    public ObservableList<Media> getItemsOrdered() {
         return itemsOrdered;
     }
 }
