@@ -1,6 +1,3 @@
-Question: Is JAVA a Pass by Value or a Pass by Reference programming language? 
-- Java là ngôn ngữ truyền tham trị, không phải truyền tham chiếu
-After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain? 
--Vì Java sử dụng cơ chế Truyền tham trị. Hàm swap chỉ nhận được 2 bản sao địa chỉ bộ nhớ của 2 cái đĩa. Việc tráo đổi 2 bản sao này bên trong hàm hoàn toàn không tác động gì đến 2 biến gốc jungleDVD và cinderellaDVD nằm ngoài hàm main
-After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed? 
--Hàm changeTitle cũng nhận một bản sao địa chỉ, nhưng bản sao này vẫn trỏ thẳng đến cái đĩa gốc trên bộ nhớ. Khi bạn gọi hàm dvd.setTitle(...), nó đã can thiệp và sửa trực tiếp nội dung bên trong cái đĩa gốc đó. Do vậy, khi ra ngoài hàm, cái đĩa gốc đã mang tên mới và việc gán dvd = new... ở dòng code sau đó chỉ làm thay đổi bản sao, không ảnh hưởng đến đĩa gốc
+- The Aims class must be updated to handle any exceptions generated when the play() methods are called. What happens when you don’t update for them to catch?
+Vì PlayerException là một Checked Exception (kế thừa trực tiếp từ lớp Exception), nếu không bọc lệnh gọi hàm play() trong khối try-catch hoặc thêm từ khóa throws lên chữ ký hàm, trình biên dịch Java sẽ báo lỗi (Compilation Error: unreported exception) và chương trình hoàn toàn không thể biên dịch/chạy được.
+Trong trường hợp ngoại lệ đó là Unchecked Exception, chương trình sẽ biên dịch được nhưng sẽ bị sập (crash) đột ngột ngay lúc Runtime nếu có lỗi xảy ra.
