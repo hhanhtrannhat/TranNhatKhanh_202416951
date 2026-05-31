@@ -1,6 +1,0 @@
-6.1
-- What happens if users choose "cancel"?
-=> Khi người dụng chọn "cancel" biến option sẽ nhận giá trị tương đương với hằng số JOption.CANCEL_OPTION, mà trong chương trình có câu lệnh để kiểm tra kết quả(YESOPTION?yes:no). Vì CANCEL_OPTION không phải YES_OPTION nên chương trình sẽ trả về "No" và hiển thị thông báo "You've choosen: No"
-- How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” 
-and “I don’t” (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help). 
-=>Chỉ hiển thị "YES" và "NO": Sử dụng phương thức showConfirmDialog với tham số optionType là JOptionPane.YES_NO_OPTION thay vì là mặc định, khi đó nút "Cancel" sẽ biến mất, buộc người dùng phải chọn một trong hai hoặc đóng cửa sổ. Trong trường hợp muốn hiện ra hai phương án là "I do" và "I don't" thì phải thay đổi nhãn văn bản của nút, ta sử dụng phương thức showOptionDialog, sử dụng mảng Object chứa hai chuỗi ký tự "I do" và "I don't". Sau đó truyền hàm này vào tham số options của hàm showOptionDialog, Hàm sẽ tự động tạo ra số lượng nút tương ứng với số phần tử trong mảng và gán nhãn chữ theo đúng thứ tự bạn đã định nghĩa.
